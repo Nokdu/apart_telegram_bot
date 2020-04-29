@@ -24,7 +24,7 @@ public final class App {
             "INSERT INTO MAIN VALUES(1, 'World')";
 
     private static final String DROP_QUERY =
-            "DROP TABLE IF EXISTS PUBLIC.EXAMPLE";
+            "DROP TABLE IF EXISTS PUBLIC.OLX";
 
     /**
      * Do not construct me.
@@ -44,27 +44,55 @@ public final class App {
                      "user_telegram",
                      "user_telegram_password")
         ) {
-            try (Statement dataQuery = db.createStatement()) {
-//                dataQuery.execute(DROP_QUERY);
-                dataQuery.execute(CREATE_QUERY);
-//                dataQuery.execute(DATA_QUERY);
-//                dataQuery.execute(DATA_QUERY_MAIN);
-            }
-
-//            try (PreparedStatement query =
-//                         db.prepareStatement("SELECT * FROM EXAMPLE")) {
-//                ResultSet rs = query.executeQuery();
-//                while (rs.next()) {
-//                    System.out.println(String.format("%s, %s!",
-//                            rs.getString("GREETING"),
-//                            rs.getString("TARGET")));
-//                }
-//                rs.close();
-//            }
+            dropDB(db);
+            createDB(db);
+            insertDB(db);
+            selectDB(db);
         } catch (SQLException ex) {
             System.out.println("Database connection failure: "
                     + ex.getMessage());
 
         }
+    }
+
+    private static void createDB(Connection db){
+        try (Statement dataQuery = db.createStatement()) {
+            dataQuery.execute(CREATE_QUERY);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void dropDB(Connection db){
+        try (Statement dataQuery = db.createStatement()) {
+            dataQuery.execute(DROP_QUERY);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void selectDB(Connection db){
+            try (PreparedStatement query =
+                         db.prepareStatement("SELECT * FROM OLX")) {
+                ResultSet rs = query.executeQuery();
+                while (rs.next()) {
+                    System.out.println(String.format("%s, %s",
+                            rs.getString("ID"),
+                            rs.getString("URL")));
+                }
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+    }
+
+    private static void insertDB(Connection db){
+        try (Statement dataQuery = db.createStatement()) {
+            String query = "INSERT INTO PUBLIC.OLX (ID) VALUES(555235555)";
+            dataQuery.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

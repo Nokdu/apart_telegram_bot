@@ -1,0 +1,167 @@
+2020-04-29 22:27:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO PUBLIC.OLX VALUES('65464','World''World''World''World''World''World''World') [21002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:319)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at tk.npars.apartment.h2.App.creacteDB(App.java:91)
+	at tk.npars.apartment.h2.App.main(App.java:47)
+2020-04-29 22:27:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO PUBLIC.OLX VALUES(65464,'World''World''World''World''World''World''World') [21002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:319)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at tk.npars.apartment.h2.App.creacteDB(App.java:91)
+	at tk.npars.apartment.h2.App.main(App.java:47)
+2020-04-29 19:28:55 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:495)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-04-29 19:29:09 jdbc[3]: exception
+java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supported.
+	at org.h2.jdbc.JdbcConnection.setClientInfo(JdbcConnection.java:1749)
+	at com.intellij.database.remote.jdbc.impl.RemoteConnectionImpl.setClientInfo(RemoteConnectionImpl.java:495)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:359)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:200)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Transport.java:197)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:562)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:796)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:677)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:676)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-04-29 22:29:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO PUBLIC.OLX VALUES(65464,'World''World''World''World''World''World') [21002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:319)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at tk.npars.apartment.h2.App.creacteDB(App.java:90)
+	at tk.npars.apartment.h2.App.main(App.java:47)
+2020-04-29 22:30:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EXAMPLE" not found; SQL statement:
+INSERT INTO PUBLIC.EXAMPLE VALUES(5555555,'World') [42102-200]
+2020-04-29 22:30:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO PUBLIC.OLX VALUES(5555555,'World') [21002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:319)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at tk.npars.apartment.h2.App.creacteDB(App.java:82)
+	at tk.npars.apartment.h2.App.main(App.java:47)
+2020-04-29 22:34:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO PUBLIC.OLX VALUES(5555555) [21002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:319)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at tk.npars.apartment.h2.App.creacteDB(App.java:82)
+	at tk.npars.apartment.h2.App.main(App.java:47)
+2020-04-29 22:37:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO PUBLIC.OLX VALUES(1, '5555555') [21002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:319)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:212)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at tk.npars.apartment.h2.App.creacteDB(App.java:82)
+	at tk.npars.apartment.h2.App.main(App.java:47)
+2020-04-29 22:38:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "GREETING" not found [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3169)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3268)
+	at org.h2.jdbc.JdbcResultSet.getString(JdbcResultSet.java:316)
+	at tk.npars.apartment.h2.App.selectDB(App.java:70)
+	at tk.npars.apartment.h2.App.main(App.java:48)
+2020-04-29 22:39:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO PUBLIC.OLX (ID) VALUES(555W5555[*])"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+INSERT INTO PUBLIC.OLX (ID) VALUES(555w5555) [42001-200]
+2020-04-29 22:43:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "OLX" not found; SQL statement:
+INSERT INTO PUBLIC.OLX (ID) VALUES(555235555) [42102-200]
+2020-04-29 22:43:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "OLX" not found; SQL statement:
+SELECT * FROM OLX [42102-200]
