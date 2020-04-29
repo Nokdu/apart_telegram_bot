@@ -1,61 +1,44 @@
 package tk.npars.apartment.h2;
 
 
+import tk.npars.apartment.helper.OlxAnnounce;
+
 import java.sql.*;
 
-/**
- * Simple example of JDBC usage.
- */
-public final class App {
-    /**
-     * Query that create table.
-     */
-    //            "CREATE TABLE IF NOT EXISTS PUBLIC.EXAMPLE (GREETING VARCHAR(6), TARGET VARCHAR(6))";
+public class App {
+
     private static final String CREATE_QUERY =
             "CREATE TABLE IF NOT EXISTS PUBLIC.olx (id INT NOT NULL, url VARCHAR, type VARCHAR(10), name VARCHAR, price VARCHAR, desc TEXT, time VARCHAR, photo VARCHAR, PRIMARY KEY (id))";
 
-//    PRIMARY KEY (id))";
-    /**
-     * Quaery that populates table with data.
-     */
-    private static final String DATA_QUERY =
-            "INSERT INTO PUBLIC.EXAMPLE VALUES('Hello','World')";
-    private static final String DATA_QUERY_MAIN =
-            "INSERT INTO MAIN VALUES(1, 'World')";
-
     private static final String DROP_QUERY =
             "DROP TABLE IF EXISTS PUBLIC.OLX";
+    private static Connection db;
 
-    /**
-     * Do not construct me.
-     */
-    private App() {
-    }
-
-    /**
-     * Entry point.
-     *
-     * @param args Commans line args. Not used.
-     */
-    public static void main(final String[] args) {
-        try (
-             Connection db = DriverManager.getConnection(
-                     "jdbc:h2:./telegramdb",
-                     "user_telegram",
-                     "user_telegram_password")
-        ) {
-            dropDB(db);
-            createDB(db);
-            insertDB(db);
-            selectDB(db);
-        } catch (SQLException ex) {
+    public App() {
+        try {
+            db = DriverManager.getConnection(
+                    "jdbc:h2:./telegramdb",
+                    "user_telegram",
+                    "user_telegram_password");
+        } catch (SQLException e) {
             System.out.println("Database connection failure: "
-                    + ex.getMessage());
-
+                    + e.getMessage());
         }
     }
 
-    private static void createDB(Connection db){
+    public static void main(final String[] args) {
+        new App().execute();
+    }
+
+    private void execute(){
+//            dropDB();
+            createDB();
+            insertDB();
+            selectDB();
+
+    }
+
+    private void createDB(){
         try (Statement dataQuery = db.createStatement()) {
             dataQuery.execute(CREATE_QUERY);
         } catch (SQLException e) {
@@ -63,7 +46,7 @@ public final class App {
         }
     }
 
-    private static void dropDB(Connection db){
+    private void dropDB(){
         try (Statement dataQuery = db.createStatement()) {
             dataQuery.execute(DROP_QUERY);
         } catch (SQLException e) {
@@ -71,7 +54,7 @@ public final class App {
         }
     }
 
-    private static void selectDB(Connection db){
+    private void selectDB(){
             try (PreparedStatement query =
                          db.prepareStatement("SELECT * FROM OLX")) {
                 ResultSet rs = query.executeQuery();
@@ -86,13 +69,42 @@ public final class App {
             }
     }
 
-    private static void insertDB(Connection db){
+    private void insertDB(){
         try (Statement dataQuery = db.createStatement()) {
-            String query = "INSERT INTO PUBLIC.OLX (ID) VALUES(555235555)";
+            String query = "INSERT INTO PUBLIC.OLX (ID) VALUES(55585555)";
             dataQuery.execute(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public void insertOlxDB(OlxAnnounce olxAnnounce){
+        try (Statement dataQuery = db.createStatement()) {
+            String query = "INSERT INTO PUBLIC.OLX (ID, URL, TYPE, NAME, PRICE, DESC, TIME, PHOTO) VALUES(?,?,?,?,?,?,?,?)";
+            PreparedStatement statement = db.prepareStatement(query);
+            statement.setInt(1, olxAnnounce.getId());
+            statement.setString(2, olxAnnounce.getUrl() );
+            statement.setString(3, olxAnnounce.getType() );
+            statement.setString(4, olxAnnounce.getName()  );
+            statement.setString(5, olxAnnounce.getPrice() );
+            statement.setString(6, olxAnnounce.getDesc() );
+            statement.setString(7, olxAnnounce.getTime() );
+            statement.setString(8, olxAnnounce.getPhoto() );
+            System.out.println(statement);
+            statement.execute();
+//            String query = "INSERT INTO PUBLIC.OLX (ID, URL, TYPE, NAME, PRICE, DESC, TIME, PHOTO) VALUES(" +
+//                    olxAnnounce.getId() +
+//                    olxAnnounce.getUrl() +
+//                    olxAnnounce.getType() +
+//                    olxAnnounce.getName() +
+//                    olxAnnounce.getPrice() +
+//                    olxAnnounce.getDesc() +
+//                    olxAnnounce.getTime() +
+//                    olxAnnounce.getPhoto() +
+//                    ")";
+//            dataQuery.execute(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

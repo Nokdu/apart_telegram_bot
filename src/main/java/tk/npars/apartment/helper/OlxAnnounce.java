@@ -11,8 +11,8 @@ public class OlxAnnounce {
     private String time;
     private String photo;
 
-    public String getId() {
-        return id;
+    public int getId() {
+        return Integer.parseInt(id);
     }
 
     public void setId(String id) {

@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import tk.npars.apartment.h2.App;
 import tk.npars.apartment.helper.OlxAnnounce;
 
 import java.io.IOException;
@@ -21,13 +22,16 @@ public class OlxSite {
 
     private void start(){
         try {
+            App app = new App();
             Document document = Jsoup.connect(url).get();
             Elements elements = document.select("tr.wrap");
             List<OlxAnnounce> announceList = new ArrayList<>();
             for (Element element : elements) {
                 announceList.add(createOlxAnnonceObject(element));
-
             }
+            announceList.forEach(announce ->{
+                app.insertOlxDB(announce);
+            });
             System.out.println();
         } catch (IOException e) {
             e.printStackTrace();
