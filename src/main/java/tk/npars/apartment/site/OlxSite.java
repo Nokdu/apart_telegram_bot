@@ -26,6 +26,7 @@ public class OlxSite {
             List<OlxAnnounce> announceList = new ArrayList<>();
             for (Element element : elements) {
                 announceList.add(createOlxAnnonceObject(element));
+
             }
             System.out.println();
         } catch (IOException e) {
