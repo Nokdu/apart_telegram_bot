@@ -2,6 +2,7 @@ package tk.npars.apartment.h2;
 
 
 import tk.npars.apartment.helper.OlxAnnounce;
+import tk.npars.apartment.notify.NotifyHolderSingl;
 
 import java.sql.*;
 
@@ -74,7 +75,7 @@ public class DaoPublicOlx {
             query.setInt(1, olxAnnounce.getId());
             ResultSet rs = query.executeQuery();
             if (!rs.next()){
-                System.out.println(olxAnnounce.getId());
+                NotifyHolderSingl.getInstance().addOlxAnnounceList(olxAnnounce);
                 return true;
             }
         } catch (SQLException e) {

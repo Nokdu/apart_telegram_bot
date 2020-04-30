@@ -11,11 +11,11 @@ public class OlxAnnounceBuilder {
         setOlxAnnounce(new OlxAnnounce(
                 setIdOlx(element),
                 setUrlOlx(element),
+                setTypeOlx(element),
                 setNameOlx(element),
                 setPriceOlx(element),
-                setTimeOlx(element),
-                setTypeOlx(element),
                 setDescOlx(element),
+                setTimeOlx(element),
                 setPhotoOlx(element)
         ));
     }

@@ -89,4 +89,16 @@ public class OlxAnnounce {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    @Override
+    public String toString() {
+        return price + "\n" +
+                name + "\n" +
+                price + "\n" +
+                time + "\n" +
+                type + "\n" +
+                url
+                ;
+
+    }
 }
