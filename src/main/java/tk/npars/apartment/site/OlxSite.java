@@ -30,7 +30,9 @@ public class OlxSite {
                 announceList.add(createOlxAnnonceObject(element));
             }
             announceList.forEach(announce ->{
-                app.insertOlxDB(announce);
+                if (app.sravnenieKey(announce)){
+                    app.insertOlxDB(announce);
+                };
             });
             System.out.println();
         } catch (IOException e) {

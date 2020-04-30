@@ -31,9 +31,9 @@ public class App {
     }
 
     private void execute(){
-//            dropDB();
+            dropDB();
             createDB();
-            insertDB();
+//            insertDB();
             selectDB();
 
     }
@@ -78,6 +78,21 @@ public class App {
         }
     }
 
+    public boolean sravnenieKey(OlxAnnounce olxAnnounce) {
+        try (PreparedStatement query =
+                     db.prepareStatement("SELECT ID FROM OLX WHERE ID = ?")) {
+            query.setInt(1, olxAnnounce.getId());
+            ResultSet rs = query.executeQuery();
+            if (!rs.next()){
+                System.out.println(olxAnnounce.getId());
+                return true;
+            }
+        } catch (SQLException e) {
+
+        }
+        return false;
+    }
+
     public void insertOlxDB(OlxAnnounce olxAnnounce){
         try (Statement dataQuery = db.createStatement()) {
             String query = "INSERT INTO PUBLIC.OLX (ID, URL, TYPE, NAME, PRICE, DESC, TIME, PHOTO) VALUES(?,?,?,?,?,?,?,?)";
@@ -90,7 +105,7 @@ public class App {
             statement.setString(6, olxAnnounce.getDesc() );
             statement.setString(7, olxAnnounce.getTime() );
             statement.setString(8, olxAnnounce.getPhoto() );
-            System.out.println(statement);
+//            System.out.println(statement);
             statement.execute();
 //            String query = "INSERT INTO PUBLIC.OLX (ID, URL, TYPE, NAME, PRICE, DESC, TIME, PHOTO) VALUES(" +
 //                    olxAnnounce.getId() +
