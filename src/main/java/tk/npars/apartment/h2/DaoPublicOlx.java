@@ -8,7 +8,7 @@ import java.sql.*;
 public class DaoPublicOlx {
 
     private static final String CREATE_QUERY =
-            "CREATE TABLE IF NOT EXISTS PUBLIC.olx (id INT NOT NULL, url VARCHAR, type VARCHAR(10), name VARCHAR, price VARCHAR, desc TEXT, time VARCHAR, photo VARCHAR, PRIMARY KEY (id))";
+            "CREATE TABLE IF NOT EXISTS PUBLIC.olx (id INT NOT NULL, url VARCHAR, type VARCHAR, name VARCHAR, price VARCHAR, desc TEXT, time VARCHAR, photo VARCHAR, PRIMARY KEY (id))";
 
     private static final String DROP_QUERY =
             "DROP TABLE IF EXISTS PUBLIC.OLX";
@@ -31,7 +31,7 @@ public class DaoPublicOlx {
     }
 
     private void execute(){
-//            dropDB();
+            dropDB();
             createDB();
             selectDB();
 

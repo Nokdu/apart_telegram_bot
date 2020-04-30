@@ -1,8 +1,10 @@
 package tk.npars.apartment.h2;
 
-import tk.npars.apartment.helper.OlxAnnounce;
+import tk.npars.apartment.helper.UrlEntity;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DaoURL {
 
@@ -24,12 +26,6 @@ public class DaoURL {
         }
     }
 
-    public void execute(){
-//        dropDB();
-        createDB();
-//        insertOlxDB();
-    }
-
     private void dropDB(){
         try (Statement dataQuery = db.createStatement()) {
             dataQuery.execute(DROP_QUERY);
@@ -45,6 +41,26 @@ public class DaoURL {
             e.printStackTrace();
         }
     }
+
+    public List<UrlEntity> selectDB(){
+        List<UrlEntity> result = new ArrayList<>();
+        try (PreparedStatement query =
+                     db.prepareStatement("SELECT * FROM URL")) {
+            ResultSet rs = query.executeQuery();
+            while (rs.next()) {
+                result.add(new UrlEntity(
+                        rs.getString("URL"),
+                        rs.getString("TYPE"),
+                        rs.getString("NAME")
+                        ));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public void insertOlxDB(String url, String type, String name){
         String query = "INSERT INTO PUBLIC.URL (URL, TYPE, NAME) VALUES(?,?,?)";
         try (PreparedStatement statement = db.prepareStatement(query)) {
