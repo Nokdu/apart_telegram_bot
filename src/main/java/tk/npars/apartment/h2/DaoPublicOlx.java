@@ -5,16 +5,16 @@ import tk.npars.apartment.helper.OlxAnnounce;
 
 import java.sql.*;
 
-public class App {
+public class DaoPublicOlx {
 
     private static final String CREATE_QUERY =
-            "CREATE TABLE IF NOT EXISTS PUBLIC.olx (id INT NOT NULL, url VARCHAR, type VARCHAR(10), name VARCHAR, price VARCHAR, desc TEXT, time VARCHAR, photo VARCHAR, PRIMARY KEY (id))";
+            "CREATE TABLE IF NOT EXISTS PUBLIC.olx (id INT NOT NULL, url VARCHAR, type VARCHAR, name VARCHAR, price VARCHAR, desc TEXT, time VARCHAR, photo VARCHAR, PRIMARY KEY (id))";
 
     private static final String DROP_QUERY =
             "DROP TABLE IF EXISTS PUBLIC.OLX";
     private static Connection db;
 
-    public App() {
+    public DaoPublicOlx() {
         try {
             db = DriverManager.getConnection(
                     "jdbc:h2:./telegramdb",
@@ -27,13 +27,12 @@ public class App {
     }
 
     public static void main(final String[] args) {
-        new App().execute();
+        new DaoPublicOlx().execute();
     }
 
     private void execute(){
             dropDB();
             createDB();
-//            insertDB();
             selectDB();
 
     }
@@ -69,15 +68,6 @@ public class App {
             }
     }
 
-    private void insertDB(){
-        try (Statement dataQuery = db.createStatement()) {
-            String query = "INSERT INTO PUBLIC.OLX (ID) VALUES(55585555)";
-            dataQuery.execute(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public boolean sravnenieKey(OlxAnnounce olxAnnounce) {
         try (PreparedStatement query =
                      db.prepareStatement("SELECT ID FROM OLX WHERE ID = ?")) {
@@ -94,9 +84,8 @@ public class App {
     }
 
     public void insertOlxDB(OlxAnnounce olxAnnounce){
-        try (Statement dataQuery = db.createStatement()) {
-            String query = "INSERT INTO PUBLIC.OLX (ID, URL, TYPE, NAME, PRICE, DESC, TIME, PHOTO) VALUES(?,?,?,?,?,?,?,?)";
-            PreparedStatement statement = db.prepareStatement(query);
+        String query = "INSERT INTO PUBLIC.OLX (ID, URL, TYPE, NAME, PRICE, DESC, TIME, PHOTO) VALUES(?,?,?,?,?,?,?,?)";
+        try (PreparedStatement statement = db.prepareStatement(query)) {
             statement.setInt(1, olxAnnounce.getId());
             statement.setString(2, olxAnnounce.getUrl() );
             statement.setString(3, olxAnnounce.getType() );
@@ -105,19 +94,7 @@ public class App {
             statement.setString(6, olxAnnounce.getDesc() );
             statement.setString(7, olxAnnounce.getTime() );
             statement.setString(8, olxAnnounce.getPhoto() );
-//            System.out.println(statement);
             statement.execute();
-//            String query = "INSERT INTO PUBLIC.OLX (ID, URL, TYPE, NAME, PRICE, DESC, TIME, PHOTO) VALUES(" +
-//                    olxAnnounce.getId() +
-//                    olxAnnounce.getUrl() +
-//                    olxAnnounce.getType() +
-//                    olxAnnounce.getName() +
-//                    olxAnnounce.getPrice() +
-//                    olxAnnounce.getDesc() +
-//                    olxAnnounce.getTime() +
-//                    olxAnnounce.getPhoto() +
-//                    ")";
-//            dataQuery.execute(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }

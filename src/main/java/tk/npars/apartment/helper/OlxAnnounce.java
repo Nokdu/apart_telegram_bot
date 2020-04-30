@@ -11,6 +11,21 @@ public class OlxAnnounce {
     private String time;
     private String photo;
 
+    public OlxAnnounce() {
+
+    }
+
+    public OlxAnnounce(String id, String url, String type, String name, String price, String desc, String time, String photo) {
+        this.id = id;
+        this.url = url;
+        this.type = type;
+        this.name = name;
+        this.price = price;
+        this.desc = desc;
+        this.time = time;
+        this.photo = photo;
+    }
+
     public int getId() {
         return Integer.parseInt(id);
     }
