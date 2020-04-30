@@ -5,7 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import tk.npars.apartment.h2.App;
+import tk.npars.apartment.h2.DaoPublicOlx;
 import tk.npars.apartment.helper.OlxAnnounce;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class OlxSite {
 
     private void start(){
         try {
-            App app = new App();
+            DaoPublicOlx daoPublicOlx = new DaoPublicOlx();
             Document document = Jsoup.connect(url).get();
             Elements elements = document.select("tr.wrap");
             List<OlxAnnounce> announceList = new ArrayList<>();
@@ -30,8 +30,8 @@ public class OlxSite {
                 announceList.add(createOlxAnnonceObject(element));
             }
             announceList.forEach(announce ->{
-                if (app.sravnenieKey(announce)){
-                    app.insertOlxDB(announce);
+                if (daoPublicOlx.sravnenieKey(announce)){
+                    daoPublicOlx.insertOlxDB(announce);
                 };
             });
             System.out.println();
