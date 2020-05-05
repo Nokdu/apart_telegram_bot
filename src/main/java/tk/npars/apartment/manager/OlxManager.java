@@ -1,7 +1,7 @@
 package tk.npars.apartment.manager;
 
 import tk.npars.apartment.h2.DaoURL;
-import tk.npars.apartment.helper.OlxAnnounce;
+import tk.npars.apartment.helper.OlxEntity;
 import tk.npars.apartment.helper.UrlEntity;
 import tk.npars.apartment.notify.NotifyHolderSingl;
 import tk.npars.apartment.site.OlxSite;
@@ -17,14 +17,14 @@ public class OlxManager {
     }
 
     public void checkManager(){
-        List<UrlEntity> urlEntities = new DaoURL().selectDB();
+        List<UrlEntity> urlEntities = new DaoURL().selectDB(); //Список всех URL Фильтров
         if (urlEntities.isEmpty()) throw new IllegalArgumentException("Empty UrlEntity table");
         urlEntities.forEach(urlEntity -> {
             OlxSite olxSite = new OlxSite();
             olxSite.execute(urlEntity.getUrl());
-            List<OlxAnnounce> olxAnnounceList = NotifyHolderSingl.getInstance().getOlxAnnounceList();
+            List<OlxEntity> olxEntityList = NotifyHolderSingl.getInstance().getOlxEntityList();
             BotInit bot = BotInit.getInstance();
-            olxAnnounceList.forEach(olxAnnounce -> {
+            olxEntityList.forEach(olxAnnounce -> {
                 try {
                     TimeUnit.MILLISECONDS.sleep(200);
                 } catch (InterruptedException e) {
@@ -32,7 +32,7 @@ public class OlxManager {
                 }
                 bot.SendMessage(olxAnnounce.toString());
             });
-            olxAnnounceList.clear();
+            olxEntityList.clear();
         });
     }
 }

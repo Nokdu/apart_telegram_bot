@@ -1,14 +1,14 @@
 package tk.npars.apartment.notify;
 
 
-import tk.npars.apartment.helper.OlxAnnounce;
+import tk.npars.apartment.helper.OlxEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotifyHolderSingl {
 
-    List<OlxAnnounce> olxAnnounceList = new ArrayList<>();
+    List<OlxEntity> olxEntityList = new ArrayList<>();
 
     private static NotifyHolderSingl instance;
 
@@ -19,12 +19,12 @@ public class NotifyHolderSingl {
         return instance;
     }
 
-    public List<OlxAnnounce> getOlxAnnounceList() {
-        return olxAnnounceList;
+    public List<OlxEntity> getOlxEntityList() {
+        return olxEntityList;
     }
 
-    public void addOlxAnnounceList(OlxAnnounce olxAnnounce) {
-        this.olxAnnounceList.add(olxAnnounce);
+    public void addOlxAnnounceList(OlxEntity olxEntity) {
+        this.olxEntityList.add(olxEntity);
     }
 
 }
