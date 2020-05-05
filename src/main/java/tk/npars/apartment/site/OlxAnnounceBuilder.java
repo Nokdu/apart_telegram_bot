@@ -1,21 +1,21 @@
 package tk.npars.apartment.site;
 
 import org.jsoup.nodes.Element;
-import tk.npars.apartment.helper.OlxAnnounce;
+import tk.npars.apartment.helper.OlxEntity;
 
 public class OlxAnnounceBuilder {
 
-    private OlxAnnounce olxAnnounce;
+    private OlxEntity olxEntity;
 
     public OlxAnnounceBuilder(Element element) {
-        setOlxAnnounce(new OlxAnnounce(
+        setOlxEntity(new OlxEntity(
                 setIdOlx(element),
                 setUrlOlx(element),
+                setTypeOlx(element),
                 setNameOlx(element),
                 setPriceOlx(element),
-                setTimeOlx(element),
-                setTypeOlx(element),
                 setDescOlx(element),
+                setTimeOlx(element),
                 setPhotoOlx(element)
         ));
     }
@@ -44,10 +44,10 @@ public class OlxAnnounceBuilder {
     private String setPhotoOlx(Element element){
         return "";
     }
-    public OlxAnnounce getOlxAnnounce() {
-        return olxAnnounce;
+    public OlxEntity getOlxEntity() {
+        return olxEntity;
     }
-    private void setOlxAnnounce(OlxAnnounce olxAnnounce) {
-        this.olxAnnounce = olxAnnounce;
+    private void setOlxEntity(OlxEntity olxEntity) {
+        this.olxEntity = olxEntity;
     }
 }

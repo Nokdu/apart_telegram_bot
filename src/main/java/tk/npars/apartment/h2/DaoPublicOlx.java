@@ -1,7 +1,8 @@
 package tk.npars.apartment.h2;
 
 
-import tk.npars.apartment.helper.OlxAnnounce;
+import tk.npars.apartment.helper.OlxEntity;
+import tk.npars.apartment.notify.NotifyHolderSingl;
 
 import java.sql.*;
 
@@ -68,13 +69,13 @@ public class DaoPublicOlx {
             }
     }
 
-    public boolean sravnenieKey(OlxAnnounce olxAnnounce) {
+    public boolean sravnenieKey(OlxEntity olxEntity) {
         try (PreparedStatement query =
                      db.prepareStatement("SELECT ID FROM OLX WHERE ID = ?")) {
-            query.setInt(1, olxAnnounce.getId());
+            query.setInt(1, olxEntity.getId());
             ResultSet rs = query.executeQuery();
             if (!rs.next()){
-                System.out.println(olxAnnounce.getId());
+                NotifyHolderSingl.getInstance().addOlxAnnounceList(olxEntity);
                 return true;
             }
         } catch (SQLException e) {
@@ -83,17 +84,17 @@ public class DaoPublicOlx {
         return false;
     }
 
-    public void insertOlxDB(OlxAnnounce olxAnnounce){
+    public void insertOlxDB(OlxEntity olxEntity){
         String query = "INSERT INTO PUBLIC.OLX (ID, URL, TYPE, NAME, PRICE, DESC, TIME, PHOTO) VALUES(?,?,?,?,?,?,?,?)";
         try (PreparedStatement statement = db.prepareStatement(query)) {
-            statement.setInt(1, olxAnnounce.getId());
-            statement.setString(2, olxAnnounce.getUrl() );
-            statement.setString(3, olxAnnounce.getType() );
-            statement.setString(4, olxAnnounce.getName()  );
-            statement.setString(5, olxAnnounce.getPrice() );
-            statement.setString(6, olxAnnounce.getDesc() );
-            statement.setString(7, olxAnnounce.getTime() );
-            statement.setString(8, olxAnnounce.getPhoto() );
+            statement.setInt(1, olxEntity.getId());
+            statement.setString(2, olxEntity.getUrl() );
+            statement.setString(3, olxEntity.getType() );
+            statement.setString(4, olxEntity.getName()  );
+            statement.setString(5, olxEntity.getPrice() );
+            statement.setString(6, olxEntity.getDesc() );
+            statement.setString(7, olxEntity.getTime() );
+            statement.setString(8, olxEntity.getPhoto() );
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();

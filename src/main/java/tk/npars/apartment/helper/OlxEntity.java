@@ -1,6 +1,6 @@
 package tk.npars.apartment.helper;
 
-public class OlxAnnounce {
+public class OlxEntity {
 
     private String id;
     private String url;
@@ -11,11 +11,11 @@ public class OlxAnnounce {
     private String time;
     private String photo;
 
-    public OlxAnnounce() {
+    public OlxEntity() {
 
     }
 
-    public OlxAnnounce(String id, String url, String type, String name, String price, String desc, String time, String photo) {
+    public OlxEntity(String id, String url, String type, String name, String price, String desc, String time, String photo) {
         this.id = id;
         this.url = url;
         this.type = type;
@@ -88,5 +88,17 @@ public class OlxAnnounce {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    @Override
+    public String toString() {
+        return price + "\n" +
+                name + "\n" +
+                price + "\n" +
+                time + "\n" +
+                type + "\n" +
+                url
+                ;
+
     }
 }
